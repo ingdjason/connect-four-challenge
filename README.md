@@ -24,5 +24,9 @@ Your task is to design a variant of the classic Connect 4 game. However, instead
 # `Big O notation`
 
 The code are optimized to run in less time, On testing the maximum runtime is: 0.31201171875
-The algorithms i used to calculate the winner after each turn have Quadratic Time: O(n3)
+The algorithms i used to calculate the winner after each turn execute has  Quadratic Time
+
+Calculate Vertical win : O(n2) * O(n2)
+Calculate Horizontal win : O(n2)
+Calculate Diagonal win : O(n2) * O(n2)
 
