@@ -158,6 +158,12 @@ class MainComponent extends React.Component{
   }
 
   handleVerticalWin(arr, player, typeGame){//Handle board for coins in vertical current player 
+    /*
+      - Temp array 
+      - Loop hover the current board and get current coin position value
+      - Check if one of the new generated board win
+        - handle check for Each row 
+    */
     let newBoard = [];
     for(var i=0; i<7; i++){
       newBoard.push([]);
