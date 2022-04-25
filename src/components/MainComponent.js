@@ -43,7 +43,7 @@ class MainComponent extends React.Component{
     this.handleOpenClose = this.handleOpenClose.bind(this);
   }
 
-  handleResetGame(e){
+  handleResetGame(e){//reset the board to initial 
     e.preventDefault();
     this.setState(state=>({
       type_game: this.state.type_game ,
@@ -52,7 +52,7 @@ class MainComponent extends React.Component{
     }))
   }
 
-  handleOpenClose({open, message, severity}){
+  handleOpenClose({open, message, severity}){//alert snack open after bad move or player win
 
     this.setState(state=>({
       open: open,
@@ -61,7 +61,7 @@ class MainComponent extends React.Component{
     }))
   }
 
-  handleChange(e){
+  handleChange(e){//update the current Connect N board to value
     e.preventDefault();
     
     this.setState(state=>({
@@ -71,13 +71,13 @@ class MainComponent extends React.Component{
     }))
   }
 
-  handlePlayerTurn(currentPlayer){
+  handlePlayerTurn(currentPlayer){//Toggle player turn 
     this.setState(state=>({
       current_player: currentPlayer === 1 ? 2: 1
     }))
   }
 
-  handleCellClick(cellPosition, rowPosition){
+  handleCellClick(cellPosition, rowPosition){//handle cell click on player click
     console.time('player-turn')
     let tempBoardGame = this.state.boardGame;
     let typeGame = this.state.type_game;
@@ -106,7 +106,7 @@ class MainComponent extends React.Component{
     console.timeEnd('player-turn')
   }
 
-  handleWinnerPrize(currentPlayer, board, player){
+  handleWinnerPrize(currentPlayer, board, player){//Update current player score 
     this.setState(state=>({
       boardGame: board,
       score_player_one: currentPlayer === 1? 
@@ -118,7 +118,7 @@ class MainComponent extends React.Component{
     }));
   }
 
-  handleDiagonalWin(arr, player, typeGame){
+  handleDiagonalWin(arr, player, typeGame){//check if current player win diagonal 
     /* This method is only set for array 7X6 */
     let diagonalPossibility = [
       [ [4,0], [5,1] ],
@@ -157,7 +157,7 @@ class MainComponent extends React.Component{
     })
   }
 
-  handleVerticalWin(arr, player, typeGame){
+  handleVerticalWin(arr, player, typeGame){//Handle board for coins in vertical current player 
     let newBoard = [];
     for(var i=0; i<7; i++){
       newBoard.push([]);
@@ -171,13 +171,13 @@ class MainComponent extends React.Component{
     })
   }
 
-  handleHorizontalWin(arr, player, typeGame){
+  handleHorizontalWin(arr, player, typeGame){//Handle board for coins in horizontal current player 
     return arr.some((item, position)=>{
       return this.handleRowCheck(item, player, typeGame);
     })
   }
 
-  handleRowCheck(arr, player, typeGame){
+  handleRowCheck(arr, player, typeGame){//Review each row for current arr board
     let addForPlayer = [];
     arr.forEach((item)=>{
       if(item === player){
@@ -196,7 +196,7 @@ class MainComponent extends React.Component{
     return false;
   }
 
-  handleAddCoin(currentPlayer, cellPosition, rowPosition){
+  handleAddCoin(currentPlayer, cellPosition, rowPosition){//add coin on user click
     let tempBoardGame = this.state.boardGame;
     let tempSet = false;
 
